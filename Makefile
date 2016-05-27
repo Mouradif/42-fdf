@@ -17,7 +17,8 @@ SRC_A =	libmlx.a \
 
 SRC_C =	main.c \
 		trace.c \
-		parse.c
+		parse.c \
+		getfile.c
 
 SRC = $(addprefix src/, $(SRC_C)) $(addprefix lib/, $(SRC_A))
 C_FLAGS = -Wall -Wextra -Werror

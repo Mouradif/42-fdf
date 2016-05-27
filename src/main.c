@@ -31,6 +31,7 @@ int		main(int argc, char **argv)
 	{
 		fdf.mlx = mlx_init();
 		fdf.win = mlx_new_window(fdf.mlx, 600, 600, "Fil De Fer");
+		fdf.grid = parse_input(argv[1]);
 		mlx_key_hook(fdf.win, key_fct, &fdf);
 		mlx_loop(fdf.mlx);
 	}
