@@ -6,11 +6,11 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 08:10:39 by mkejji            #+#    #+#             */
-/*   Updated: 2016/05/07 22:07:21 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/08/22 09:45:09 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h
+#include "libft.h"
 #include <unistd.h>
 #ifndef BUFF_SIZE
 # define BUFF_SIZE 1024
@@ -29,7 +29,7 @@ static int	extract_next_line(char **rest, char **line, int offset)
 	return (1);
 }
 
-int			get_next_line(const int fd, char **line)
+int			ft_get_next_line(const int fd, char **line)
 {
 	static char	*rest = NULL;
 	char		buf[BUFF_SIZE + 2];
@@ -52,5 +52,5 @@ int			get_next_line(const int fd, char **line)
 		return (-1);
 	buf[len] = (len == 0) ? '\3' : '\0';
 	ft_stradd(&rest, buf);
-	return (get_next_line(fd, line));
+	return (ft_get_next_line(fd, line));
 }

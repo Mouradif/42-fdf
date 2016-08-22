@@ -6,12 +6,15 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 14:02:57 by mkejji            #+#    #+#             */
-/*   Updated: 2016/08/22 08:43:17 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/08/22 09:07:44 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# ifndef BUFF_SIZE
+#  define BUFF_SIZE 4096
+# endif
 # include <string.h>
 
 /*
@@ -155,5 +158,13 @@ void			ft_bufdel(t_buf **b);
 t_buf			*ft_bufnew(size_t size);
 t_buf			*ft_bufdup(char *str);
 t_buf			*ft_bufcat(t_buf *a, t_buf *b);
+t_buf			*ft_buf_file(char *filename);
+t_buf			*ft_buf_fd(int fd);
+
+/*
+** Utils
+*/
+
+int				ft_get_next_line(int fd, char **line);
 
 #endif

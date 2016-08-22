@@ -6,7 +6,7 @@
 #    By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/03 22:04:04 by mkejji            #+#    #+#              #
-#    Updated: 2016/07/17 20:51:00 by mkejji           ###   ########.fr        #
+#    Updated: 2016/08/22 09:08:03 by mkejji           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ FT_SRC = \
 	strstr		strsub		strtrim		tolower		toupper		lstappendnew \
 	lstdelfirst	realloc		stradd		strcuthead	bufnew		bufdel		 \
 	bufappend	bufcopy		putbuf		putbufnl	bufcat		strnchr		 \
-	putnbrendl	bufappendchar
+	putnbrendl	bufappendchar			buf_file	get_next_line
 
 SRC := $(addprefix ft_, $(FT_SRC)) $(addprefix btree_, $(BTREE_SRC))
 
