@@ -25,5 +25,6 @@ typedef struct	s_win
 
 void			trace_trait(int *p1, int *p2, t_mlx *p);
 int				**parse_input(char *filename);
+char			*getfile(char *filename);
 
 #endif

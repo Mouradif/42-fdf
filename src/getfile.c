@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   getfile.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/23 17:25:43 by mkejji            #+#    #+#             */
-/*   Updated: 2016/08/22 08:51:03 by mkejji           ###   ########.fr       */
+/*   Created: 2015/12/11 14:40:59 by mkejji            #+#    #+#             */
+/*   Updated: 2015/12/14 01:43:51 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "fdf.h"
-#include "libft.h"
 #include <fcntl.h>
+#include "libft.h"
 
-int	**parse_input(char *filename)
+char	*getfd(int fd)
 {
-	t_buf	*filecontent;
 	char	*line;
-	int		**grid;
-	int		lines;
+	char	*file;
+
+	file = NULL;
+	line = NULL;
+	while ((get_next_line(fd, &line)) > 0)
+	{
+		ft_stradd(&file, line);
+		ft_stradd(&file, "\n");
+	}
+	return (file);
+}
+
+char	*getfile(char *filename)
+{
+	int	fd;
 
 	fd = open(filename, O_RDONLY);
-	lines = 0;
-	while (get_next_line(fd, &line))
-	{
-		ft_stradd(&filecontent, line);
-
-		lines++;
-	}
-	return (grid);
+	return (getfd(fd));
 }
