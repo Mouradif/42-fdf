@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/23 17:25:43 by mkejji            #+#    #+#             */
-/*   Updated: 2016/08/22 08:38:57 by mkejji           ###   ########.fr       */
+/*   Created: 2015/11/24 08:45:40 by mkejji            #+#    #+#             */
+/*   Updated: 2015/12/05 21:54:13 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "fdf.h"
-#include "libft.h"
-#include <stdio.h>
-#include <fcntl.h>
+#include <string.h>
 
-int	**parse_input(char *filename)
+void	*ft_memccpy(void *d, const void *s, int c, size_t n)
 {
-	t_buf	*filecontent;
-	char	*line;
-	int		**grid;
-	int		fd;
-	int		lines;
+	size_t i;
 
-	fd = open(filename, O_RDONLY);
-	lines = 0;
-	while (get_next_line(fd, &line))
+	if (n == 0)
+		return ((void *)NULL);
+	i = 0;
+	while (i < n)
 	{
-		ft_stradd(&filecontent, line);
-
-		lines++;
+		*((unsigned char*)d + i) = *((unsigned char*)s + i);
+		if (*((unsigned char*)d + i) == (unsigned char)c)
+			return ((void*)(d + i + 1));
+		i++;
 	}
-	return (grid);
+	return ((void*)NULL);
 }

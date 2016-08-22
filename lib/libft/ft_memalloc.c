@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/23 17:25:43 by mkejji            #+#    #+#             */
-/*   Updated: 2016/08/22 08:38:57 by mkejji           ###   ########.fr       */
+/*   Created: 2015/11/30 20:09:06 by mkejji            #+#    #+#             */
+/*   Updated: 2015/12/04 02:06:55 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "fdf.h"
+#include <stdlib.h>
 #include "libft.h"
-#include <stdio.h>
-#include <fcntl.h>
 
-int	**parse_input(char *filename)
+void	*ft_memalloc(size_t size)
 {
-	t_buf	*filecontent;
-	char	*line;
-	int		**grid;
-	int		fd;
-	int		lines;
+	void	*ptr;
 
-	fd = open(filename, O_RDONLY);
-	lines = 0;
-	while (get_next_line(fd, &line))
-	{
-		ft_stradd(&filecontent, line);
-
-		lines++;
-	}
-	return (grid);
+	ptr = malloc(size);
+	if (ptr != NULL)
+		ft_bzero(ptr, size);
+	return (ptr);
 }

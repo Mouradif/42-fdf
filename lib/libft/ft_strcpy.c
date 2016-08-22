@@ -1,36 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/23 17:25:43 by mkejji            #+#    #+#             */
-/*   Updated: 2016/08/22 08:38:57 by mkejji           ###   ########.fr       */
+/*   Created: 2015/11/26 19:13:06 by mkejji            #+#    #+#             */
+/*   Updated: 2015/12/01 01:17:07 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "fdf.h"
 #include "libft.h"
-#include <stdio.h>
-#include <fcntl.h>
 
-int	**parse_input(char *filename)
+char	*ft_strcpy(char *restrict dst, const char *restrict src)
 {
-	t_buf	*filecontent;
-	char	*line;
-	int		**grid;
-	int		fd;
-	int		lines;
-
-	fd = open(filename, O_RDONLY);
-	lines = 0;
-	while (get_next_line(fd, &line))
-	{
-		ft_stradd(&filecontent, line);
-
-		lines++;
-	}
-	return (grid);
+	ft_memcpy(dst, src, ft_strlen(src) + 1);
+	return (dst);
 }

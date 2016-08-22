@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/23 17:25:43 by mkejji            #+#    #+#             */
-/*   Updated: 2016/08/22 08:38:57 by mkejji           ###   ########.fr       */
+/*   Created: 2015/11/30 17:40:46 by mkejji            #+#    #+#             */
+/*   Updated: 2016/07/13 16:43:34 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "fdf.h"
 #include "libft.h"
-#include <stdio.h>
-#include <fcntl.h>
 
-int	**parse_input(char *filename)
+char	*ft_strchr(const char *s, int c)
 {
-	t_buf	*filecontent;
-	char	*line;
-	int		**grid;
-	int		fd;
-	int		lines;
+	char	*str;
 
-	fd = open(filename, O_RDONLY);
-	lines = 0;
-	while (get_next_line(fd, &line))
+	str = (char*)s;
+	while (*str)
 	{
-		ft_stradd(&filecontent, line);
-
-		lines++;
+		if (*str == (char)c)
+			return (str);
+		str++;
 	}
-	return (grid);
+	return ((*str == (char)c) ? str : NULL);
 }

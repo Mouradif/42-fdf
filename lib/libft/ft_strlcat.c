@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/23 17:25:43 by mkejji            #+#    #+#             */
-/*   Updated: 2016/08/22 08:38:57 by mkejji           ###   ########.fr       */
+/*   Created: 2015/11/30 17:07:51 by mkejji            #+#    #+#             */
+/*   Updated: 2015/12/10 08:02:56 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "fdf.h"
+#include <string.h>
 #include "libft.h"
-#include <stdio.h>
-#include <fcntl.h>
 
-int	**parse_input(char *filename)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	t_buf	*filecontent;
-	char	*line;
-	int		**grid;
-	int		fd;
-	int		lines;
+	size_t	i;
+	size_t	dstlen;
+	size_t	srclen;
 
-	fd = open(filename, O_RDONLY);
-	lines = 0;
-	while (get_next_line(fd, &line))
+	srclen = ft_strlen(src);
+	dstlen = ft_strlen(dst);
+	if (dstlen > size)
+		return (size + srclen);
+	i = 0;
+	while (dstlen + i + 1 < size && src[i] != '\0')
 	{
-		ft_stradd(&filecontent, line);
-
-		lines++;
+		dst[i + dstlen] = src[i];
+		i++;
 	}
-	return (grid);
+	if (i < ft_strlen(src))
+		return (size);
+	dst[dstlen + i] = '\0';
+	return (dstlen + ft_strlen(src));
 }

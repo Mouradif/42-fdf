@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/23 17:25:43 by mkejji            #+#    #+#             */
-/*   Updated: 2016/08/22 08:38:57 by mkejji           ###   ########.fr       */
+/*   Created: 2015/11/26 18:33:10 by mkejji            #+#    #+#             */
+/*   Updated: 2016/05/03 07:56:29 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "fdf.h"
+#include <stdlib.h>
 #include "libft.h"
-#include <stdio.h>
-#include <fcntl.h>
 
-int	**parse_input(char *filename)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	t_buf	*filecontent;
-	char	*line;
-	int		**grid;
-	int		fd;
-	int		lines;
+	size_t	i;
 
-	fd = open(filename, O_RDONLY);
-	lines = 0;
-	while (get_next_line(fd, &line))
+	i = 0;
+	if (dst < src)
 	{
-		ft_stradd(&filecontent, line);
-
-		lines++;
+		while (i < len)
+		{
+			*((unsigned char*)dst + i) = *((unsigned char*)src + i);
+			i++;
+		}
 	}
-	return (grid);
+	else
+	{
+		while (len-- > i)
+			*((unsigned char*)dst + len) = *((unsigned char*)src + len);
+	}
+	return (dst);
 }

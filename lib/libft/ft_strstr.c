@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/23 17:25:43 by mkejji            #+#    #+#             */
-/*   Updated: 2016/08/22 08:38:57 by mkejji           ###   ########.fr       */
+/*   Created: 2015/11/30 17:56:48 by mkejji            #+#    #+#             */
+/*   Updated: 2015/12/01 01:28:53 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "fdf.h"
+#include <string.h>
 #include "libft.h"
-#include <stdio.h>
-#include <fcntl.h>
 
-int	**parse_input(char *filename)
+char	*ft_strstr(const char *s1, const char *s2)
 {
-	t_buf	*filecontent;
-	char	*line;
-	int		**grid;
-	int		fd;
-	int		lines;
+	size_t	i;
+	size_t	j;
 
-	fd = open(filename, O_RDONLY);
-	lines = 0;
-	while (get_next_line(fd, &line))
+	i = 0;
+	j = 0;
+	if (*s2 == '\0')
+		return ((char *)s1);
+	while (s1[i])
 	{
-		ft_stradd(&filecontent, line);
-
-		lines++;
+		j = 0;
+		while (s1[i + j] && s2[j] && s2[j] == s1[i + j])
+			j++;
+		if (j == ft_strlen(s2))
+			return ((char*)s1 + i);
+		i++;
 	}
-	return (grid);
+	return (NULL);
 }

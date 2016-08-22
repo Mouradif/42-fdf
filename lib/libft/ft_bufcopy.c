@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   ft_bufcopy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/23 17:25:43 by mkejji            #+#    #+#             */
-/*   Updated: 2016/08/22 08:38:57 by mkejji           ###   ########.fr       */
+/*   Created: 2016/07/13 15:46:44 by mkejji            #+#    #+#             */
+/*   Updated: 2016/07/13 15:46:46 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "fdf.h"
 #include "libft.h"
-#include <stdio.h>
-#include <fcntl.h>
+#include <stdlib.h>
 
-int	**parse_input(char *filename)
+t_buf	*ft_bufcopy(t_buf *src)
 {
-	t_buf	*filecontent;
-	char	*line;
-	int		**grid;
-	int		fd;
-	int		lines;
+	char	*str;
+	t_buf	*buf;
 
-	fd = open(filename, O_RDONLY);
-	lines = 0;
-	while (get_next_line(fd, &line))
-	{
-		ft_stradd(&filecontent, line);
-
-		lines++;
-	}
-	return (grid);
+	str = (char*)malloc(src->cap);
+	ft_memcpy(str, src->buf, src->size + 1);
+	buf = (t_buf*)malloc(sizeof(t_buf));
+	buf->size = src->size;
+	buf->cap = src->cap;
+	buf->buf = str;
+	return (buf);
 }

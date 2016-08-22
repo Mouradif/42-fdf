@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/23 17:25:43 by mkejji            #+#    #+#             */
-/*   Updated: 2016/08/22 08:38:57 by mkejji           ###   ########.fr       */
+/*   Created: 2015/11/25 16:22:08 by mkejji            #+#    #+#             */
+/*   Updated: 2015/12/04 03:49:16 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "fdf.h"
 #include "libft.h"
-#include <stdio.h>
-#include <fcntl.h>
 
-int	**parse_input(char *filename)
+void	ft_putnbr(int n)
 {
-	t_buf	*filecontent;
-	char	*line;
-	int		**grid;
-	int		fd;
-	int		lines;
-
-	fd = open(filename, O_RDONLY);
-	lines = 0;
-	while (get_next_line(fd, &line))
+	if (n == -2147483648)
+		ft_putstr("-2147483648");
+	else
 	{
-		ft_stradd(&filecontent, line);
-
-		lines++;
+		if (n < 0)
+		{
+			ft_putchar('-');
+			n = (unsigned int)(-n);
+		}
+		if (n >= 10)
+			ft_putnbr(n / 10);
+		ft_putchar(n % 10 + 48);
 	}
-	return (grid);
 }

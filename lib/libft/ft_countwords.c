@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   ft_countwords.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/23 17:25:43 by mkejji            #+#    #+#             */
-/*   Updated: 2016/08/22 08:38:57 by mkejji           ###   ########.fr       */
+/*   Created: 2015/12/04 05:45:01 by mkejji            #+#    #+#             */
+/*   Updated: 2015/12/04 05:47:02 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "fdf.h"
-#include "libft.h"
-#include <stdio.h>
-#include <fcntl.h>
-
-int	**parse_input(char *filename)
+unsigned int	ft_countwords(char const *s, char c)
 {
-	t_buf	*filecontent;
-	char	*line;
-	int		**grid;
-	int		fd;
-	int		lines;
+	unsigned int	i;
+	unsigned int	len;
+	unsigned int	count;
 
-	fd = open(filename, O_RDONLY);
-	lines = 0;
-	while (get_next_line(fd, &line))
+	i = 0;
+	len = 0;
+	count = 0;
+	while (s[i])
 	{
-		ft_stradd(&filecontent, line);
-
-		lines++;
+		count = (s[i] == c && len > 0) ? count + 1 : count;
+		len = (s[i] == c) ? 0 : len + 1;
+		i++;
 	}
-	return (grid);
+	return ((len) ? count + 1 : count);
 }

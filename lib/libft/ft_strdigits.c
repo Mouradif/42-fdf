@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   ft_strdigits.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/23 17:25:43 by mkejji            #+#    #+#             */
-/*   Updated: 2016/08/22 08:38:57 by mkejji           ###   ########.fr       */
+/*   Created: 2015/11/30 18:35:35 by mkejji            #+#    #+#             */
+/*   Updated: 2015/11/30 18:35:45 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "fdf.h"
-#include "libft.h"
-#include <stdio.h>
-#include <fcntl.h>
-
-int	**parse_input(char *filename)
+int		ft_strdigits(char *str)
 {
-	t_buf	*filecontent;
-	char	*line;
-	int		**grid;
-	int		fd;
-	int		lines;
+	int i;
 
-	fd = open(filename, O_RDONLY);
-	lines = 0;
-	while (get_next_line(fd, &line))
-	{
-		ft_stradd(&filecontent, line);
-
-		lines++;
-	}
-	return (grid);
+	i = ((str[0] == '-') || (str[0] == '+')) ? 1 : 0;
+	while (str[i] >= '0' && str[i] <= '9')
+		i++;
+	return (i);
 }

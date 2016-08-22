@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/23 17:25:43 by mkejji            #+#    #+#             */
-/*   Updated: 2016/08/22 08:38:57 by mkejji           ###   ########.fr       */
+/*   Created: 2015/11/30 18:22:18 by mkejji            #+#    #+#             */
+/*   Updated: 2015/12/04 01:26:11 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "fdf.h"
-#include "libft.h"
-#include <stdio.h>
-#include <fcntl.h>
-
-int	**parse_input(char *filename)
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	t_buf	*filecontent;
-	char	*line;
-	int		**grid;
-	int		fd;
-	int		lines;
+	unsigned int	i;
 
-	fd = open(filename, O_RDONLY);
-	lines = 0;
-	while (get_next_line(fd, &line))
+	i = 0;
+	while (s1[i] && s2[i])
 	{
-		ft_stradd(&filecontent, line);
-
-		lines++;
+		if ((unsigned char)s1[i] != (unsigned char)s2[i])
+			return (*((unsigned char*)s1 + i) - *((unsigned char*)s2 + i));
+		i++;
 	}
-	return (grid);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

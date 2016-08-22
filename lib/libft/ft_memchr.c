@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/23 17:25:43 by mkejji            #+#    #+#             */
-/*   Updated: 2016/08/22 08:38:57 by mkejji           ###   ########.fr       */
+/*   Created: 2015/11/26 18:38:09 by mkejji            #+#    #+#             */
+/*   Updated: 2015/12/04 02:06:44 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "fdf.h"
-#include "libft.h"
-#include <stdio.h>
-#include <fcntl.h>
+#include <string.h>
 
-int	**parse_input(char *filename)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	t_buf	*filecontent;
-	char	*line;
-	int		**grid;
-	int		fd;
-	int		lines;
+	size_t			i;
+	unsigned char	*a;
 
-	fd = open(filename, O_RDONLY);
-	lines = 0;
-	while (get_next_line(fd, &line))
+	i = 0;
+	a = (unsigned char*)s;
+	while (i < n)
 	{
-		ft_stradd(&filecontent, line);
-
-		lines++;
+		if (a[i] == (unsigned char)c)
+			return ((void*)s + i);
+		i++;
 	}
-	return (grid);
+	return (NULL);
 }
