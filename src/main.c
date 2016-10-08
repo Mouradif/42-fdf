@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/23 17:25:25 by mkejji            #+#    #+#             */
-/*   Updated: 2016/08/22 11:46:22 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/10/08 22:01:11 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ int		main(int argc, char **argv)
 		printf("width: %zu, height: %zu\n", fdf->width, fdf->height);
 		print_grid(tab);
 		mlx_key_hook(fdf->win, key_fct, fdf);
-		trace_trait(ft_point(595, 5), ft_point(5, 595), fdf);
-		//trace_grid(fdf);
+		trace_grid(fdf);
 		mlx_loop(fdf->mlx);
 	}
 	else
