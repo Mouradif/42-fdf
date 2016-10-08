@@ -12,6 +12,9 @@
 
 #ifndef FDF_H
 # define FDF_H
+# define COLOR_WHITE 0x00FFFFFF
+# define START_X 5
+# define START_Y 300
 # include <stdlib.h>
 
 typedef struct	s_win
@@ -34,5 +37,7 @@ int				**parse_input(char *filename);
 char			*getfile(char *filename);
 t_win			*init_window(int **grid);
 t_point			ft_point(int x, int y);
+void			print_grid(int **grid);
+void			trace_grid(t_win *p);
 
 #endif

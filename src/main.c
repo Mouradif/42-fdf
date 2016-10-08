@@ -15,7 +15,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-int		key_fct(int keycode, t_win *p)
+int		key_fct(int keycode)
 {
 	if (keycode == 53)
 		exit(0);
@@ -31,13 +31,12 @@ int		main(int argc, char **argv)
 	if (argc == 2)
 	{
 		tab = parse_input(argv[1]);
-		fdf = init_window(parse_input(argv[1]));
+		fdf = init_window(tab);
+		printf("width: %zu, height: %zu\n", fdf->width, fdf->height);
+		print_grid(tab);
 		mlx_key_hook(fdf->win, key_fct, fdf);
-		trace_trait(ft_point(4, 5), ft_point(150, 150), fdf);
-		trace_trait(ft_point(64, 12), ft_point(9, 333), fdf);
-		trace_trait(ft_point(54, 15), ft_point(123, 433), fdf);
-		trace_trait(ft_point(4, 5), ft_point(120, 150), fdf);
-		trace_trait(ft_point(4, 5), ft_point(150, 120), fdf);
+		trace_trait(ft_point(595, 5), ft_point(5, 595), fdf);
+		//trace_grid(fdf);
 		mlx_loop(fdf->mlx);
 	}
 	else

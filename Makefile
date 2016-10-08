@@ -12,24 +12,28 @@
 
 NAME	=	fdf
 
-SRC		=	main.c \
-			trace.c \
-			parse.c \
-			point.c
+SRC		=	src/main.c \
+			src/trace.c \
+			src/parse.c \
+			src/point.c
 
-C_FLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror
+
 FW		= -framework OpenGL -framework AppKit
+
+$(CC)	= gcc
 
 $(NAME): all
 
 all: libft
-	gcc -Iincludes $(CC_FLAGS) $(SRC) -o $(NAME) $(FW)
+	$(CC) -Iincludes $(CFLAGS) $(SRC) -Llib -lft -lmlx -lm -o $(NAME) $(FW)
+
+debug:
+	$(CC) -g -Iincludes $(CFLAGS) $(SRC) -o $(NAME)_debug $(FW)
 
 libft:
 	make -C libft
-
-debug:
-	gcc -g -Iincludes $(CC_FLAGS) $(SRC) -o $(NAME)_debug $(FW_ADD)
+	cp libft/libft.a lib
 
 clean:
 	make clean -C libft
@@ -39,3 +43,5 @@ fclean:
 	rm $(NAME)
 
 re:	fclean all
+
+.PHONY: libft

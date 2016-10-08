@@ -77,7 +77,6 @@ int		**parse_input(char *filename)
 		i++;
 	}
 	grid[i] = NULL;
-	print_grid(grid);
 	return (grid);
 }
 
@@ -86,6 +85,7 @@ t_win	*init_window(int **grid)
 	t_win	*fdf;
 	int		i;
 
+	i = 0;
 	fdf = (t_win*)malloc(sizeof(t_win));
 	fdf->mlx = mlx_init();
 	fdf->win = mlx_new_window(fdf->mlx, 600, 600, "Fil De Fer");
@@ -94,7 +94,7 @@ t_win	*init_window(int **grid)
 		i++;
 	fdf->height = i;
 	i = 0;
-	while (grid[0][i])
+	while (grid[0][i] != INT_MIN)
 		i++;
 	fdf->width = i;
 	return (fdf);
