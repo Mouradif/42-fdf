@@ -12,25 +12,21 @@
 
 NAME	=	fdf
 
-SRC_A	=	lib/libmlx.a \
-			libft/libft.a
-
-SRC_C	=	main.c \
+SRC		=	main.c \
 			trace.c \
 			parse.c \
 			point.c
 
-SRC		= $(addprefix src/, $(SRC_C)) $(SRC_A)
 C_FLAGS	= -Wall -Wextra -Werror
 FW		= -framework OpenGL -framework AppKit
 
 $(NAME): all
 
-libft:
-	make all -C libft/
-
 all: libft
 	gcc -Iincludes $(CC_FLAGS) $(SRC) -o $(NAME) $(FW)
+
+libft:
+	make -C libft
 
 debug:
 	gcc -g -Iincludes $(CC_FLAGS) $(SRC) -o $(NAME)_debug $(FW_ADD)

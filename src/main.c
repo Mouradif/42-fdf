@@ -33,7 +33,11 @@ int		main(int argc, char **argv)
 		tab = parse_input(argv[1]);
 		fdf = init_window(parse_input(argv[1]));
 		mlx_key_hook(fdf->win, key_fct, fdf);
-		trace_trait(ft_point(4, 5), ft_point(25, 25), fdf);
+		trace_trait(ft_point(4, 5), ft_point(150, 150), fdf);
+		trace_trait(ft_point(64, 12), ft_point(9, 333), fdf);
+		trace_trait(ft_point(54, 15), ft_point(123, 433), fdf);
+		trace_trait(ft_point(4, 5), ft_point(120, 150), fdf);
+		trace_trait(ft_point(4, 5), ft_point(150, 120), fdf);
 		mlx_loop(fdf->mlx);
 	}
 	else
