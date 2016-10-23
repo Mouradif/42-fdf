@@ -33,13 +33,14 @@ debug:
 
 libft:
 	make -C libft
-	cp libft/libft.a lib
+	mv libft/libft.a lib
 
 clean:
 	make clean -C libft
 
 fclean: 
 	make fclean -C libft
+	rm lib/libft.a
 	rm $(NAME)
 
 re:	fclean all
