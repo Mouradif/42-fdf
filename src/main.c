@@ -27,7 +27,15 @@ int		main(int argc, char **argv)
 {
 	t_win	*fdf;
 	int		**tab;
+	t_point	tl;
+	t_point tr;
+	t_point	bl;
+	t_point	br;
 
+	tl = ft_point(100, 100);
+	tr = ft_point(500, 100);
+	bl = ft_point(500, 100);
+	br = ft_point(500, 500);
 	if (argc == 2)
 	{
 		tab = parse_input(argv[1]);
@@ -35,6 +43,7 @@ int		main(int argc, char **argv)
 		printf("width: %zu, height: %zu\n", fdf->width, fdf->height);
 		print_grid(tab);
 		mlx_key_hook(fdf->win, key_fct, fdf);
+		//trace_trait(br, tl, fdf);
 		trace_grid(fdf);
 		mlx_loop(fdf->mlx);
 	}

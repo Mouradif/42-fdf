@@ -23,22 +23,19 @@ void	trace_trait(t_point p1, t_point p2, t_win *p)
 {
 	t_point	d;
 	double	pas[2];
-	double	temoin[2];
 	int		m;
 	int		i;
 
 	i = -1;
 	d = ft_point(p2.x - p1.x, p2.y - p1.y);
 	m = MAX(ABS(d.x), ABS(d.y));
-	temoin[0] = (d.x < 0) ? -1 : 1;
-	temoin[1] = (d.y < 0) ? -1 : 1;
-	pas[0] = (ABS(d.x) > ABS(d.y)) ? temoin[0] : d.x / d.y;
-	pas[1] = (ABS(d.x) < ABS(d.y)) ? temoin[1] : d.y / d.x;
+	pas[0] = (ABS(d.x) > ABS(d.y)) ? 1 : ABS(d.x / d.y);
+	pas[1] = (ABS(d.x) < ABS(d.y)) ? 1 : ABS(d.y / d.x);
 	while (++i < m)
 	{
 		mlx_pixel_put(p->mlx, p->win, (int)round(p1.x), (int)round(p1.y), COLOR_WHITE);
-		p1.x += pas[0];
-		p1.y += pas[1];
+		p1.x += (p2.x > p1.x) ? pas[0] : -pas[0];
+		p1.y += (p2.y > p1.y) ? pas[1] : -pas[1];
 	}
 }
 
@@ -49,22 +46,22 @@ void	trace_grid(t_win *p)
 	t_point	p1;
 	t_point	p2;
 
-	p2 = ft_point(0, 0);
 	j = 0;
 	while (j < p->height)
 	{
 		i = 0;
 		while (i < p->width)
 		{
-			p1 = ft_point(START_X + (i * 15) + (j * 7), START_Y + (i * 7) - (j * 7) + (p->grid[j][i] * 3));
+			p2 = ft_point(0, 0);
+			p1 = ft_point(START_X + (i * 15) + (j * 7), START_Y + (i * 7) - (j * 7) - (p->grid[j][i] * 5));
 			if (p->grid[j][i + 1] != INT_MIN)
 			{
-				p2 = ft_point(START_X + ((i + 1) * 15) + (j * 7), START_Y + ((i + 1) * 7) - (j * 7) + (p->grid[j][i + 1] * 3));
+				p2 = ft_point(START_X + ((i + 1) * 15) + (j * 7), START_Y + ((i + 1) * 7) - (j * 7) - (p->grid[j][i + 1] * 5));
 				trace_trait(p1, p2, p);
 			}
 			if (p->grid[j + 1] != NULL)
 			{
-				p2 = ft_point(START_X + (i * 15) + ((j + 1) * 7), START_Y + (i * 7) - ((j + 1) * 7) + (p->grid[j + 1][i] * 3));
+				p2 = ft_point(START_X + (i * 15) + ((j + 1) * 7), START_Y + (i * 7) - ((j + 1) * 7) - (p->grid[j + 1][i] * 5));
 				trace_trait(p1, p2, p);
 			}
 			if (p2.x == 0 && p2.y == 0)
